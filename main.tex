@@ -1,0 +1,974 @@
+\documentclass[10pt,reqno]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[left=0.5in,right=0.5in,top=0.5in,bottom=0.5in]{geometry}
+\usepackage{mathtools}
+\usepackage{stmaryrd}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{sseq}
+%\renewcommand{\rmdefault}{pplx}
+%\usepackage{eulervm}
+\usepackage[charter]{mathdesign}
+\hypersetup{
+  colorlinks,
+  allcolors=[rgb]{0,0.45,0}
+}
+\binoppenalty=\maxdimen
+\relpenalty=\maxdimen
+\allowdisplaybreaks[1]
+%\renewcommand\refname{References.}
+\title{Homology of commutative rings}
+\author{D. Quillen}
+
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Exalcomm}{Exalcomm}
+\DeclareMathOperator{\Ho}{Ho}
+\DeclareMathOperator{\gr}{gr\,}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\coker}{coker}
+
+\makeatletter
+\newenvironment{nenv}[1]{
+\par\medskip\noindent\textbf{#1}.\,\itshape
+}
+\makeatother
+
+\makeatletter
+\newenvironment{env}[2]{
+\par\medskip\noindent\textbf{#1}~\textbf{#2}.\,\itshape
+}
+\makeatother
+
+\makeatletter
+\newenvironment{envr}[2]{
+\par\medskip\noindent\textbf{#1}~\textbf{#2}.\,\rmfamily
+}
+\makeatother
+
+\makeatletter
+\newenvironment{prop}[1]{
+\par\medskip\noindent\textbf{Proposition}~\textbf{#1}.\,\itshape
+}
+\makeatother
+
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\Lra}{\Longrightarrow}
+\newcommand{\cat}{\mathcal}
+\newcommand{\C}{\cat{C}}
+\newcommand{\M}{\cat{M}}
+\newcommand{\R}{\cat{R}}
+\newcommand{\sR}{\mathrm{s}\R}
+\newcommand{\T}{\cat{T}}
+\renewcommand{\L}{\mathbf{L}}
+\renewcommand{\H}{\mathrm{H}}
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\Mod}[1]{\mathrm{Mod}_{#1}}
+\newcommand{\Alg}[1]{\mathrm{Alg}_{#1}}
+
+\begin{document}
+\maketitle
+
+\section*{Chapter~I.}
+\subsection*{\textsection~1. Differentials and derivations}
+
+All rings are commutative, associative, with identity and all modules are unitary unless
+stated otherwise. $\R$ denotes the category of rings. Also all diagrams are understood
+to be commutative.
+
+Let $A$ be a ring and let $\C=A\backslash\R$ be the category of $A$-algebras.
+An object of $\C$ is a ring $B$ together with a map $i_B:A\to B$ of rings,
+and a map $f:B\to B'$ in $\C$ is a map pf rings such that $fi_B=i_{B'}$. $\C$
+is a category of universal algebras so the general theory of [HA, \textsection~5, p.~5.14]
+applies to define cohomology groups for an object $B$
+of $\C$ with values in a ``$B$-module,'' where ``$B$-module'' in the general theory
+means an abelian group object in $\C/B$. We show in this section that this notion of
+$B$-module coincides with the usual one. Also we calculate the abelianization functor
+on $\C/B$ in terms of differentials.
+
+Let $B$ denote a fixed $A$-algebra and let $\C/B$ be the category of $A$-algebras
+over $B$. Here ``over'' is used as in category theory, so that an object of $\C/B$
+is an $A$-algebra together with a map $u_X:X\to B$ of $A$-algebras. If $M$ is a
+$B$-module, let $B\oplus M$ be the $A$-algebra over $B$ with
+\[
+  (b\oplus m)(b'\oplus m')=bb'\oplus(bm'+b'm),
+\]
+\[
+  i_{B\oplus M}(a)=i_B(a),
+\]
+\[
+  u_{B\oplus M}(b\oplus m)=b.
+\]
+If $\theta:Y\to B\oplus M$ is a map in $\C/B$, then $\theta y=u_Y y\oplus Dy$ where
+$D:Y\to M$ satisfies
+\[
+  Di_Y(a)=0,
+\]
+\[
+  D(yy')=u_Y(y)Dy'+u_Y(y')Dy.
+\]
+In other words $D$ is an $A$-derivation of $Y$ with values in $M$ considered as a
+$B$-module via $u_Y$. Conversely given such a $D$ be obtain a $\theta$ and therefore
+\[
+  \Hom_{\C/B}(Y,B\oplus M)\simeq\Der(Y/A,M).\tag{1.1}
+\]
+This is an isomorphism of functors of $Y$. As $\Der(Y/A,M)$ is an abelian group under
+addition we see that $B\oplus M$ is an abelian group object of $\C/B$.
+
+Recall that an $H$-object ($H$ for H. Hopf) in a category is an object endowed with
+an operation having a two-sided identity. An $H$-object of $\C/B$ is therefore an
+object $X$ together with maps
+\[
+  \varepsilon:B\lra X,
+\]
+\[
+  \mu:X\times_B X\lra X,
+\]
+such that
+\[
+  \mu\circ(\varepsilon u_X,\id_X)=\mu\circ(\id_X,\varepsilon u_X)=\id_X.\tag{1.2}
+\]
+For the abelian group object $B\oplus M$ one calculates that
+\[
+  \varepsilon(b)=b\oplus 0,
+\]
+\[
+  \mu(b\oplus m,b\oplus m')=b\oplus(m+m').\tag{1.3}
+\]
+
+\begin{prop}{1.4}
+Any $H$-object of $\C/B$ is isomorphic to $B\oplus M$ with multiplication (1.3) for
+some $B$-module $M$. In particular any $H$-object is an abelian group object.
+\end{prop}
+\begin{proof}
+Given an $H$-object $X$, let $M=\ker(u_X:X\to B)$ considered as a $B$-module via
+$\varepsilon_X:B\to X$. If $x,y\in M$, then by (1.2)
+\[
+  \mu(x,0)=x,\quad\mu(0,y)=y
+\]
+so as $\mu$ is a homomorphism
+\[
+  xy=\mu(x,0)\mu(0,y)=\mu((x,0)(0,y))=\mu(0,0)=0.
+\]
+Thus $M$ has the zero multiplication. It follows easily that the map $B\oplus M\to X$
+given by $b\oplus m\mapsto\varepsilon_X b+m$ is an isomorphism in $\C/B$. Abbreviating
+$\varepsilon_X$ to $\varepsilon$ we have
+\begin{align*}
+  \mu(\varepsilon b+m,\varepsilon b+m')
+  &=\mu(\varepsilon b,\varepsilon b)+\mu(m,0)+\mu(0,m')\\
+  &=\varepsilon b+m+m',
+\end{align*}
+which shows that the multiplication $\mu$ on $X$ is the same as (1.3) on $B\oplus M$.
+\end{proof}
+
+Let $(\C/B)_\text{ab}$ be the category of abelian group objects in $\C/B$ and let
+$\M_B$ be the abelian category of $B$-modules. From 1.4 we obtain
+\begin{prop}{1.5}
+There is an equivalence of categories
+\[
+  B\oplus M\longmapsfrom M
+\]
+\[
+  (\C/B)_\text{ab}\simeq\M_B
+\]
+\[
+  X\longmapsto\ker u_X.
+\]
+In particular $(\C/B)_\text{ab}$ is an abelian category.
+\end{prop}
+
+If $Y$ is an $A$-algebra, let $D_{Y/A}$ be the $Y$-module of $A$-differentials of $Y$.
+There is a canonical $A$-derivation $d:Y\to D_{Y/A}$ such that
+\[
+  \Hom_{\M_Y}(D_{Y/A},N)\simeq\Der(Y/A,N)
+\]
+\[
+  \theta\longmapsto\theta\circ d
+\]
+for any $Y$-module $N$. From 1.1 we have
+\[  
+  \Hom_{\C/B}(Y,B\oplus M)\simeq\Der(Y/A,M)
+  \simeq\Hom_{\M_Y}(D_{Y/A},M)\simeq\Hom_{\M_B}(D_{Y/A}\otimes_Y B,M).\tag{1.6}
+\]
+Thus
+
+\begin{prop}{1.7}
+With respect to the equivalences of categories of 1.5 we have
+\[
+  D_{Y/B}\otimes_Y B\longmapsfrom Y
+\]
+\[
+  \begin{tikzcd}
+  {\M_B\simeq(\C/B)_\text{ab}}\ar[r,"i"',shift right]
+  & {\C/B}\ar[l,"\text{ab}"',shift right]
+  \end{tikzcd}
+\]
+\[
+  M\longmapsto B\oplus M,
+\]
+where $i$ is the natural faithful functor and $\text{ab}$ is the abelianization functor,
+the left adjoint of $i$.
+\end{prop}
+
+From now on we will identify $(\C/B)_\text{ab}$ and $\M_B$ by the equivalence of
+Prop. 1.5. 1.7 shows that $Y\mapsto D_{Y/A}\otimes_Y B$ is identified with the
+abelianization functor on $\C/B$.
+
+\subsection*{\textsection~2. Homology and cohomology}
+
+The $q$-th cohomology group of the $A$-algebra $B$ with values in the abelian group
+object $B\oplus M$ of $\C/B$ [HA, II, p.~5.14] will be denoted
+$\D^q(B/A,M)$ and called simply the $q$-th cohomology group of the $A$-algebra $B$
+with values in the $B$-module $M$. According to Theorem 5 (loc.cit.) this may be
+defined is two different but equivalent ways---as shead cohomology from a
+Grothendieck topology and by (semi-)simplicial resolutions. Both definitions for
+$\D^q(B/A,M)$ will be given in this section. The former will be used in globalizing
+the definition to preschemes and the latter leads to a notion of homology for the
+$A$-algebra $B$.
+
+(2.1). Let $\T$ be the Grothendieck topology [GT] whose underlying
+category is $\C/B$ and where a covering of $Y$ is a family consisting of a single map
+$Z\to Y$ which is set-theoretically surjective. Representable functors are sheaves for
+$\T$ hence by 1.1 $Y\mapsto\Der(Y/A,M)$ is a sheaf of $B$-modules on $\T$.
+The first definition for the cohomology of $B$ with values in $M$ is
+\[
+  \D^q(B/A,M)\simeq\H_\T^q(B,\Der(-/A,M))\tag{2.2}
+\]
+where the right side denotes sheaf cohomology for the topology $\T$.
+
+We will give other definitions for $\D^q$ in 2.14. It is first necessary to state some
+facts about simplicial objects.
+
+(2.3). If $X$ is a simplicial object in an abelian category, its homology in
+dimension $q$, denoted $\H_q(X)$, is defined to be the homology in dimension $q$ of
+the chain complex contructed from $X$ with differential $d=\sum_i(-1)^i d_i$. By the
+normalization theorem this is the same as $\H_q(NX)$ where $NX$ is the normalized
+subcomplex of $X$. Hence when $X$ is a simplicial abelian group, $\H_q(X)$ is the
+$q$-th homology group of $X$ in the sense of Moore.
+
+(2.4). If $f:X\to Y$ and $i:U\to V$ are maps in a category, we say that $f$ has the
+right lifting property (RLP) with respect to $i$ and that $i$ has the left lifting
+property (LLP) with respect to $f$ if fiven any commutative square of solid arrows
+\[
+  \begin{tikzcd}
+    U\ar[r]\ar[d,"i"'] & X\ar[d,"f"]\\
+    V\ar[r]\ar[ur,dotted] & Y
+  \end{tikzcd}
+\]
+a dotted arrow exists such that the whole diagram is commutative. Let $\Delta(n)$ be the
+``standard $n$-simplex' simplicial set and let $i_n:\Delta(n)\to\Delta(n)$ be the
+inclusion of its $(n-1)$-skeleton. The following proposition characterizes those maps
+of simplicial abelian groups which as trivial fibrations in the sense of [HA].
+
+\begin{prop}{2.5}
+The following assertions are equivalent for a map $f:X\to Y$ of simplicial abelian
+groups.
+\begin{itemize}
+  \item[(i)] $f$ is surjective (in each dimension) and $\H_\ast(f):\H_\ast(X)\simeq\H_\ast(Y)$.
+  \item[(ii)] As a map of simplicial sets $f$ has the RLP with respect to
+        $i_n:\Delta(n)\to\Delta(n)$ for all $n\geq 0$.
+  \item[(iii)] As a map of simplicial sets $f$ has the RLP with respect to any injective
+        (in each dimension) map of simplicial sets.
+\end{itemize}
+\end{prop}
+This results from [HA, II, \textsection~3, Prop.~2].
+
+(2.6). A map of simplicial rings is said to be a trivial fibration if as a map of
+simplicial abelian groups it satisfies the equivalent conditions of 2.5. A map of
+simplicial rings is called a cofibration if it has the LLP with respect to all trivial
+fibrations of simplicial rings. Cofibrations may be described in the following
+alternative way. Call a map $i:R\to S$ of simplicial rings free if there are subsets
+$C_q\subset S_q$, $q\geq 0$, such that (i) $\eta^\ast C_q\subset C_p$ whenever
+$\eta:[p]\to[q]$ is a surjective monotone map and (ii) $S_q$ is a free $R_q$-algebra
+(polynomial ring) with generators $C_q$. Then Theorem 6.1 of [?] implies:
+
+\begin{prop}{2.7}
+Any free map of simplicial rings is a cofibration.
+\end{prop}
+The proof of Propostion 3 [HA, II, \textsection~4] yields
+
+\begin{prop}{2.8}
+Any map $f$ of simplicial rings may be factored $f=pi$ where $i$ is free and
+$p$ is a trivial fibration.
+\end{prop}
+
+\begin{prop}{2.9}
+A map $i:R\to S$ of simplicial rings is a cofibration if and only if there is a free map
+$j:R\to T$ and maps $u:T\to S$, $v:S\to T$ of simplicial rings under $R$ such that
+$uv=\id_S$.
+\end{prop}
+\begin{proof}
+The sufficiency is clear. If $i$ is a cofibration let $i=uj$ be a factorization as
+in 2.8. Then $v$ is obtained as the dotted arrow in
+\[
+  \begin{tikzcd}
+    R\ar[r,"j"]\ar[d,"i"'] & T\ar[d,"u"]\\
+    S\ar[r,"\id_S"]\ar[ur,dotted] & S.
+  \end{tikzcd}
+\]
+\end{proof}
+
+(2.10). If $K$ is a simplicial set and $Y$ is a simplicial ring, then the function complex
+$Y^K$ has a natural structure as a simplcial ring. Let $I=\Delta(1)$ and let
+$j_e:Y^I\to Y$, $e=0,1$ (resp. $\sigma:Y\to Y^I$) be the map induced by the inclusion of
+the $e$-th vertex $\Delta(0)\to\Delta(1)$ (resp. the unique map $\Delta(1)\to\Delta(0)$).
+If $f,g:X\rightrightarrows Y$ are two maps of simplicial rings then a (simplicial)
+homotopy from $f$ to $g$ may be identified with a map of simplicial rings $h:X\to Y^I$
+such that $j_0 h=f$ and $j_1 h=g$. $\sigma:Y\to Y^I$ is of course the ``constant'' homotopy
+from $\id_Y$ to $\id_Y$.
+
+\begin{prop}{2.11}
+Let $i:R\to S$ be a cofibration and $f:X\to Y$ a trivial fibration of simplicial rings. Let
+$h:R\to X^I$ and $k:S\to Y^I$ be homotopies such that $ki=f^I h$, and let
+$\theta_0,\theta_1:S\rightrightarrows X$ be maps with $\theta_e i=j_e h$ and $f\theta_e=j_e k$,
+$e=0,1$. Then there is a homotopy $H:S\to X^I$ with $Hi=h$, $f^I H=k$, and $j_e H=\theta_e$,
+$e=0,1$.
+\end{prop}
+\begin{proof}
+Consider the square
+\[
+  \begin{tikzcd}
+    R\ar[rr,"h"]\ar[d,"i"'] & & X^I\ar[d,"{(f^I,j_0,j_1)}"]\\
+    S\ar[rr,"{(k,\theta_0,\theta_1)}"]\ar[urr,"H",dotted] & & {Y^I\times_{Y^{\dot{I}}}X^{\dot{I}}}
+  \end{tikzcd}
+\]
+where $X^{\dot{I}}=X\times X$. The map $(f^I,j_0,j_1)$ is seen to be a trivial fibration using
+2.5(iii), hence the dotted arrow exists and gives te desired homotopy.
+\end{proof}
+
+(2.12). Let $u:R\to S$ be a map of simplicial rings. By a cofibrant factorization of $u$ we mean
+a factorization $R\xrightarrow{i}T\xrightarrow{p}S$ of $u$ where $i$ is a cofibration and $p$ is
+a trivial fibration. If $R\to T'\to S$ is another cofibrant factorization of $u$, then by the
+definition of cofibration there are maps $\varphi:T\to T'$ and $\psi:T'\to T$ in the category
+$R\backslash\sR/S$. By 2.11 $\varphi\psi$ and $\psi\varphi$ are homotopic to $\id_{T'}$ and
+$\id_T$ respectively in this category. Therefore a cofibrant factorization of a map is unique
+up to simplicial homotopy under the source and over the target of the map.
+
+(2.13). If $X$ is an object of a category we let $cX$ denote the ``constant'' simplicial object
+with $(cX)_q=X$, $\varphi^\ast=\id_X$ for all $q$, $\varphi$.
+
+(2.14). Let $A$, $B$, $M$, and $\C$ be as in \textsection~1. A simplicial $A$-algebra over $B$
+(i.e. simplicial object of $\C/B$) $P$ is the same as a factorization $cA\to P\to cB$ of the map
+$cA\to cB$. We shall call $P$ a projective $A$-algebra resolution of $B$ if this factorization is
+a cofibrant factorization. By 2.8 projective $A$-algebra resolutions of $B$ exist. Choose one $P$,
+and let $\L D_{B/A}$ be the simplicial $B$-module $D_{P/A}\otimes_P B$ obtained by applying the
+``abelianization'' functor $Y\mapsto D_{Y/A}\otimes_Y B$ dimension-wise to $P$. The simplicial
+homotopy type of $\L D_{B/A}$ is independent of the choice of $P$ by 2.12. The underlying chain
+complex of $\L D_{B/A}$ is called the cotangent complex of the $A$-algebra $B$ and is unique up
+to chain homotopy equivalence of the choice of $P$. The following groups are then well-defined:
+\[
+  \D_q(B/A,M)=\H_q(\L D_{B/A}\otimes_B M),\tag{2.15}
+\]
+\[
+  \D^q(B/A,M)=\H^q(\Hom_B(\L D_{B/A},M)).\tag{2.16}
+\]
+We call these the $q$-th homology and cohomology of the $A$-algebra $B$ with values in $M$. When
+$M=B$ we write simply $\D_q(B/A)$ and $\D^q(B/A)$.
+
+\begin{prop}{2.14}
+The definitions 2.2 and 2.16 are consistent.
+\end{prop}
+\begin{proof}
+We have
+\[
+  \D^q(B/A,M)=\H^q(\Hom_B(D_{P/A}\otimes_P B,M))=\H^q(\Der(P/A,M)),
+\]
+so the result follows from [HA, II, \textsection~5, th.~5]. Alternatively it follows from a general
+theorem of Verdier (SGA, 1963--1964, Expose~5, Appendix) once one notes that a $\T$-hypercovering of
+$B$ is the same as a simplicial $A$-algebra resolution and that a projective resolution is by (2.14)
+a cofinal object in the category of $\T$-hypercoverings of $B$.
+\end{proof}
+
+\subsection*{\textsection~3. Elementary properties}
+
+In this section we establish properties of the homology and cohomology groups which are elementary in
+the sense that they do not use special properties of commutative rings and hence are true without
+essential modification for all kinds of universal algebras.
+
+\begin{prop}{3.1}
+If $B$ is a free $A$-algebra, then $\L D_{B/A}\simeq cD_{B/A}$ and hence
+\[
+  \D^q(B/A,M)=\D_q(B/A,M)=0,\quad q>0,
+\]
+\[
+  \D^0(B/A,M)=\Der(B/A,M),
+\]
+\[
+  \D_0(B/A,M)=D_{B/A}\otimes_B M.
+\]
+\end{prop}
+\begin{proof}
+The identity map $cB\to cB$ makes $cB$ a free simplicial $A$-algebra resolution of $B$, hence
+$\L D_{B/A}\simeq cD_{B/A}$ and the proposition follows.
+\end{proof}
+
+(3.2). In analogy with 2.6 we say that a simplicial module $X$ over a simplicial ring $R$ is
+free if there are subsets $C_q\subset X_q$ such that (i) $\eta^\ast C_q\subset C_p$ if
+$\eta:[p]\to[q]$ is a surjective monotone map and (ii) $X_q$ is a free $R_q$-module with
+base $C_q$. $X$ will be called projective if it is a direct summand of a free simplicial
+$R$-module.
+
+If $P$ is a free $A$-algebra resolution of $B$ with generators $C_q\subset P_q$ as in 2.6,
+then $\{dx\otimes 1 : x\in C_q\}\subset D_{P_q/A}\otimes_{P_q}B$ is a set of generators as
+in 3.2. Hence $D_{P/A}\otimes_P B$ is a free simplicial $B$-module. If $Q$ is a projective
+$A$-algebra resolution, then by 2.9 $Q$ is a retract of a free one $P$ and so $D_{Q/A}\otimes_Q B$
+is a projective simplicial $B$-module. In particular as a chain complex $D_{Q/A}\otimes_Q B$ is
+projective in each dimension. Thus
+
+\begin{prop}{3.3}
+$\L D_{B/A}$ is a projective simplicial $B$-module.
+\end{prop}
+
+\begin{nenv}{Corollary}
+If $0\to M'\to M\to M''\to 0$ is an exact sequence of $B$-modules then there are long exact
+sequences
+\[
+  0\lra\D^0(B/A,M')\lra\D^0(B/A,M)\lra\D^0(B/A,M'')\lra\D^1(B/A,M')\lra\cdots,\tag{3.4}
+\]
+\[
+  \cdots\lra\D_1(B/A,M'')\lra\D_0(B/A,M')\lra\D_0(B/A,M)\lra\D_0(B/A,M'')\lra 0.\tag{3.5}
+\]
+\end{nenv}
+
+\begin{nenv}{Corollary}
+There are universal coefficient spectral sequences
+\[
+  E_{pq}^2=\Tor_p^B(\D_q(B/A),M)\Lra\D_{p+q}(B/A,M),\tag{3.6}
+\]
+\[
+  E_2^{pq}=\Ext_B^p(\D_q(B/A),M)\Lra\D^{p+q}(B/A,M).\tag{3.7}
+\]
+\end{nenv}
+
+\begin{prop}{3.8}
+$\D^0(B/A,M)=\Der(B/A,M)$, $\D_0(B/A,M)=D_{B/A}\otimes_B M$.
+\end{prop}
+\begin{proof}
+As $Y\mapsto D_{Y/A}\otimes_Y B$ is a left adjoint functor by 1.6, it is
+right exact. Hence $\D_0(B/A)=D_{B/A}$ and the proposition follows from 3.6 and 3.7.
+\end{proof}
+
+\begin{envr}{Remark}{3.9}
+The spectral sequence 3.7 shows that $M\mapsto D^q(B/A,M)$ is the $q$-th derived functor of
+$M\mapsto\Der(B/A,M)$ if and only if $\D_q(B/A)=0$ for $q>0$. This can fail to be so even if
+$A$ is a field, and in this respect commutative ring cohomology is quite distinct from group,
+Lie algebra, and associative algebra cohomology.
+\end{envr}
+
+(3.10). By an extension of the $A$-algebra $B$ by $M$ we mean an exact sequence
+\[
+  0\lra M\xrightarrow{\ i\ }X\xrightarrow{\ u\ }B\lra 0\tag{3.11}
+\]
+where $u$ is a map of $A$-algebras such that $(\ker u)^2=0$ and where $i$ induces an
+isomorphism of $B$-modules $M\xrightarrow{\sim}\ker u$, $\ker u$ being endowed with the
+$B$-module structure $u(x)y=x\cdot y$, $x\in X$, $y\in\ker u$. Let $\Exalcomm(B/A,M)$
+be the set of isomorphism classes of extentions of the $A$-algebra $B$ by $M$.
+
+\begin{prop}{3.12}
+There is a canonical bijection
+\[
+  \D^1(B/A,M)\simeq\Exalcomm(B/A,M).
+\]
+\end{prop}
+\begin{proof}
+Given a free $A$-algebra resolution $P$ of $B$ and an extention 3.11, choose a map
+$\theta:P_0\to X$ of $A$-algebras over $B$. Then $i^{-1}\{\theta d_0-\theta d_1\}:P_1\to M$
+is a normalized $1$-cocycle of $\Der(P/A,M)$ whose cohomology class is independent of the
+choice of $\theta$. This gives a map $\Phi:\Exalcomm(B/A,M)\to\D^1(B/A,M)$ which one may
+show is independent of the choice of $P$. Conversely given an $A$-derivation $D:P_1\to M$ let
+\[
+  \begin{tikzcd}
+    {X=\coker\big(P_1}\ar[rr,"{(d_0,D)}",shift left]\ar[rr,"{(d_1,0)}"',shift right] & & {P_0\oplus M\big),}
+  \end{tikzcd}
+\]
+the cokernel being in the category of $A$-modules, and let $p:P_0\oplus M\to X$ be the canonical
+projection. Then $X$ is a quotient $A$-algebra of $P_0\oplus M$ and if $D$ is a cocycle of
+$\Der(P/A,M)$ we obtain an extention 3.11 with $u(p(y\oplus m))=\varepsilon y$, $i(m)=p(0\oplus m)$.
+It is staightforward to verify that this procedure gives an inverse to $\Phi$.
+\end{proof}
+
+\begin{envr}{Remark}{3.13}
+It is also possible to prove 3.12 using the interpretation of the sheaf cohomology in terms of
+``torsors.'' By [?] one also gets a general interpretation of $\D^2$ this way, however for rings
+the methods of the second chapter seem better for handling the higher cohomology.
+\end{envr}
+
+\begin{env}{Corollary}{3.14}
+Suppose that $A/I\simeq B$ where $I$ is an ideal in $A$. Then $\D_0(B/A)=0$
+and $\D_1(B/A)\simeq I/I^2$.
+\end{env}
+\begin{proof}
+$\D_0(B/A)=0$ by 3.8. From 3.7 and 3.12 we have $\Hom_B(\D_1(B/A),M)\simeq\D^1(B/A,M)\simeq\Exalcomm(B/A,M)$.
+
+Let $\chi\in\Exalcomm(B/A,I/I^2)$ be the isomorphism class of the extention $0\to I/I^2\to A/I^2\to B\to 0$.
+By functorality $\chi$ defines a natural transformation $\chi_\ast:\Hom_N(I/I^2,M)\to\Exalcomm(B/A,M)$.
+Conversely given an extention 3.11, choose a map $\theta:A\to X$ with $u\theta=i_B$; the restriction of
+$\theta$ to $I$ gives rise to a homomorphism of $B$-modules $I/I^2\to M$. This procedure is easily seen to
+define an inverse to $\chi_\ast$, hence $\Hom_B(\D_1(B/A),M)\simeq\Hom_B(I/I^2,M)$ and so $\D_1(B/A)\simeq I/I^2$.
+\end{proof}
+
+\subsection*{\textsection~4. Further properties}
+
+In this section we establish properties of the cohomology theory which are peculiar to commutative rings, since
+they depend on the fact that the direct sum in the category of $A$-algebras is given by the tensor product. We
+begin by recalling facts about simplicial modules which are proved in [HA, II, \textsection~6].
+
+(4.1). Let $R$ be a simplicial ring and let $\M_R$ be the abelian category of simplicial $R$-modules. The
+homotopy category $\Ho(\M_R)$ is obtained from $\M_R$ by formally adjoining the inverses of the weak equivalences
+(maps which induce isomorphisms on homology). $\Ho(\M_R)$ is equivalent to the category whose objects are
+the projective simplicial $R$-modules (3.2) with homotopy classes of maps for morphisms. When $R=cA$, 
+$\Ho(\M_R)$ is equivalent to the full subcategory of the derived category of $A$-modules consisting of the
+chain complexes.
+
+(4.2). If $X$, $Y$ are two simplicial $R$-modules, let $\Tor_i^R(X,Y)$ be the simplicial $R$-module
+obtained by first applying the tri-functor $\Tor_i^-(-,-)$ dimension-wise. Let $X\otimes_R^\L Y$ denote
+the derived tensor product of $X$ and $Y$. $X\otimes_R^\L Y$ is isomorphic in $\Ho(\M_R)$ to
+$P\otimes_R Q$, where $P$ and $Q$ are projective resolutions of $X$ and $Y$ respectively. There is a
+spectral sequence ([HA, II, \textsection~6, th.~6])
+\[
+  E_{pq}^2=\H_p(\Tor_q^R(X,Y))\Lra\H_{p+q}(X\otimes_R^\L Y)\tag{4.3}
+\]
+one of whose edge homomorphisms is the map on homology induced by the canonical map
+$X\otimes_R^\L Y\simeq P\otimes_R Q\to X\otimes_R Y$. Consequently we have
+
+\begin{prop}{4.3}
+If $\Tor_q^R(X,Y)=0$ for $q>0$, then $X\otimes_R^\L Y\simeq X\otimes_R Y$.
+\end{prop}
+
+(4.4). Let $u:R\to S$ be a map of simplicial rings. Define $\L D_{S/R}$ to be the projective
+simplicial $S$-module $D_{P/R}\otimes_P S$ where $R\to P\to S$ is a cofibrant factorization of $u$
+(2.12). As an object of $\Ho(\M_S)$ it is independent up to isomorphism of the choice of factorization.
+If $X$ is a simplicial $S$-module we define
+\[
+  \D_q(S/R,X)=\H_q(\L D_{S/R}\otimes_S^\L X)\simeq\H_q(\L D_{S/R}\otimes_S X),\tag{4.5}
+\]
+where the last isomorphism is from 4.3. It is clear that this definition specializes to 2.15
+in the case where $u$ is the map $cA\to cB$ and $X=cM$. Moreover the obvious generalization of 3.5
+holds and 3.6 generalizes by ([HA, II, th.~6(c)]) to a spectral sequence
+\[
+  E_{pq}^2=\H_p(\D_q(S/R)\otimes_S^\L X)\Lra\D_{p+q}(S/R,X),\tag{4.6}
+\]
+where $\D_q(S/R)=\D_q(S/R,S)$.
+
+\begin{nenv}{Proposition}
+Suppose $u:R\to R'$ and $v:R\to S$ are maps of simplicial rings such that $\Tor_q^R(R',S)=0$ for
+$q>0$. If $S'=S\otimes_R R'$, then there are canonical isomorphisms in $\Ho(\M_{S'})$
+\[
+  \L D_{S/R}\otimes_R R'\simeq\L D_{S'/R'},\tag{4.7}
+\]
+\[
+  \L D_{S'/R}\simeq\L D_{S/R}\otimes_R R'\oplus\L D_{R'/R}\otimes_R S.\tag{4.8}
+\]
+\end{nenv}
+\begin{proof}
+First observe that if $R\to P$ is a cofibration (resp. free map) of simplicial rings, then $P$ is
+a projective (resp. free) $R$-module. Using 2.9, one reduces to the case where $P$ is free, whence
+if $C_\ast$ is an $R$-algebra basis for $P$ as in 2.6, then the monomials in the elements of $C_\ast$
+form an $R$-module basis for $P$ as in 3.2.
+
+Now let $R\to P\to S$ be a cofibrant factorization of $R\to S$. As $P\to S$ is a weak equivalence of
+$R$-modules, so is $P\otimes_R^\L R'\to S\otimes_R^\L R'$, since $-\otimes_R^\L-$ is a functor on
+$\Ho(\M_R)$. By hypothesis, the fact that $P$ is a projective $R$-module by the above remarks, and
+4.3, this map is isomorphic to the map $P\otimes_R R'\to S'$. Hence this last map is a weak equivalence;
+as it is a trivial fibration. As cobase extension preserves cofibrations, it follows that
+$R'\to P\otimes_R R'\to S'$ is a cofibrant factorization of $R'\to S'$ and hence setting $P'=P\otimes_R R'$
+\[
+  \L D_{S'/R'}=D_{P'/R'}\otimes_{R'}S'\simeq(D_{P/R}\otimes_R S)\otimes_R R'\simeq\L D_{S/R}\otimes_R R'
+\]
+which proves 4.7. To prove 4.8, let $R\to Q\to R'$ be a cofibrant factorization of $R\to R'$. By the same
+argument as above we find that $R\to P\otimes_R Q\to S'$ is a cofibrant factorization of $R\to S'$ and so
+\begin{align*}
+  \L D_{S'/R'}&=D_{P\otimes_R Q/R}\otimes_{P\otimes_R Q}S'\simeq(D_{P/R}\otimes_R Q\oplus D_{Q/R}\otimes_R P)\otimes_{P\otimes_R Q}S'\\
+              &\simeq(D_{P/R}\otimes_P S)\otimes_R R'\oplus(D_{Q/R}\otimes_Q R')\otimes_R S\\
+              &\simeq\L D_{S/R}\otimes_R R'\oplus\L D_{R'/R}\otimes_R S.
+\end{align*}
+The resulting isomorphisms in $\Ho(\M_{S'})$ are canonical since they are independent of the choices of $P$,
+$Q$ by 2.11.
+\end{proof}
+
+\begin{env}{Corollary}{4.9}
+Let $B$ and $C$ be $A$-algebras and let $N$ be a $B\otimes_A C$-module. If $\Tor_q^A(B,C)=0$ for $q>0$, then
+there are isomorphisms
+\[
+  \D^q(B\otimes_A C/C,N)=\D^q(B/A,N),
+\]
+\[
+  \D^q(B\otimes_A C/A,N)=\D^q(B/A,N)\oplus\D^q(C/A,M),
+\]
+and similarly for homology.
+\end{env}
+
+(4.10). If $0\to X'\to X\to X''\to 0$ is an exact sequence in $\M_R$, then in $\Ho(\M_R)$ there is a cofibration
+sequence ([HA, II, \textsection~6])
+\[
+  X'\lra X\lra X''\xrightarrow{\ \partial\ }\Sigma X',\tag{4.11}
+\]
+where $\Sigma$ denotes the suspension functor on $\Ho(\M_R)$. When $R=cB$ and we identify $\Ho(\M_R)$ with
+the subcategory of the derived category of $B$-modules consisting of chain complexes, then the suspension functor
+shifts a complex to the left and the sequence 4.11 is the distinguished triangle associated to the exact sequence.
+
+\begin{nenv}{Theorem}
+Let $R\xrightarrow{u}S\xrightarrow{v}T$ be maps of simplicial rings. Then there is a canonical cofibration sequence
+$\Ho(\M_T)$
+\[
+  \L D_{S/R}\otimes_S T\lra\L D_{T/R}\lra\L D_{T/S}\lra\Sigma(\L D_{S/R}\otimes_S T).\tag{4.12}
+\]
+\end{nenv}
+\begin{proof}
+Form a diagram
+\[
+  \begin{tikzcd}
+    & & Q\ar[d,"i_2"]\ar[rdd,"q"]\\
+    & P\ar[ur,"j"]\ar[d,"p"] & S\otimes_P Q\ar[rd,"r"]\\
+    R\ar[ur,"i"]\ar[r,"u"] & S\ar[ur,"i_1"]\ar[rr,"v"] & & T
+  \end{tikzcd}
+  \tag{4.13}
+\]
+by choosing cofibrant factorizations $u=pi$ and $vp=qj$, and then filling in the rest of the diagram in the obvious
+way.
+
+As $j$ is a cofibration $Q$ is a projective $P$-module, hence by 4.3 the map $i_2$ is isomorphic to
+$p\otimes_P^\L\id_Q:P\otimes_P^\L Q\to S\otimes_P^\L Q$, which is a weak equivalence since $p$ is. As $i_2$ and
+$q$ are weak equivalences so is $r$; $r$ is also surjective since $q$ is and therefore $r$ is a trivial fibration
+of simplicial $S$-algebras. As $j$ is a cofibration so is $i_1$; therefore $v=ri_1$ is a cofibrant factorization.
+
+Suppose for the moment that 4.13 is a diagram of rings where $Q$ is a free $P$-algebra. If $N$ is a $T$-module,
+then there is an exact sequence
+\[
+  0\lra\Der(Q/P,N)\lra\Der(Q/R,N)\xrightarrow{\ j^\ast\ }\Der(P/R,N)\lra 0
+\]
+where $j$ is onto because $Q$ is a free $P$-algebra and hence there is an $R$-algebra map from $Q$ to $P$ which
+is left inverse to $j$. As this sequence is functorial in $N$ it comes from an exact sequence of $T$-modules
+\[
+  0\lra(D_{P/R}\otimes_P S)\otimes_S T\lra D_{Q/R}\otimes_Q T\lra D_{S\otimes_P Q/S}\otimes_{S\otimes_P Q}T\lra 0.\tag{4.14}
+\]
+This last sequence is seen to be functorial in the diagram of rings 4.13, hence applying this functorial exact sequence
+dimension-wise to 4.13 now considered as a diagram of simplicial rings we obtain an exact sequence 4.14 of simplicial
+$T$-modules.
+
+Now using that $S\otimes_P Q$ is a projective $S$-algebra resolution of $T$, that $Q$ is a projective $R$-algebra resolution
+of $T$, and that $P$ is a projective $R$-algebra resolution of $S$, we see that the cofibration sequence in $\Ho(\M_T)$
+associated to 4.14 is the desired cofibration sequence 4.12.
+
+It remains to show this cofibration sequence is independent of the choice of diagram 4.13. Suppose given a diagram of
+simplicial rings
+\[
+  \begin{tikzcd}
+    R\ar[r]\ar[d] & S\ar[r]\ar[d] & T\ar[d]\\
+    R'\ar[r] & S'\ar[r] & T'
+  \end{tikzcd}
+  \tag{4.15}
+\]
+and suppose given a diagram (4.13)$'$ similar to 4.13 but with primes. By lifting successively in the diagrams
+\[
+  \begin{tikzcd}
+    R\ar[r]\ar[d] & P'\ar[d]\\
+    P\ar[ur,dotted]\ar[r] & S'
+  \end{tikzcd}
+  \quad
+  \begin{tikzcd}
+    P\ar[r]\ar[d] & Q'\ar[d]\\
+    Q\ar[ur,dotted]\ar[r] & T'
+  \end{tikzcd}
+  \tag{4.16}
+\]
+we obtain a map from 4.13 to (4.13)$'$, hence a map from the exact sequence 4.14 to the corresponding exact sequence
+(4.14)$'$, and finally a map of cofibration sequences. The resulting map is independent of the choices of liftings in
+4.16 because by 2.11 two liftings in the first square are joined by a homotopy which may then be extended to a homotopy
+between the liftings in the second square. It follows that the map of exact sequences 4.14 to (4.14)$'$ is unique up to
+homotopy and hence the map of cofibration sequences is well-defined.
+\end{proof}
+
+Specializing to constant simplicial rings, we have
+\begin{env}{Corollary}{4.17}
+If $A\to B\to C$ are maps of rings, then there is a canonical exact triangle in the derived category of $C$-modules
+\[
+  \begin{tikzcd}
+    \L D_{B/A}\otimes_B C\ar[rr] & & \L D_{C/A}\ar[ld]\\
+    & \L D_{C/B}\ar[ul,dotted].
+  \end{tikzcd}
+\]
+Hence if $M$ is a $C$-module, there are canonical exact sequences
+\[
+  0\lra\D^0(C/B,M)\lra\D^0(C/A,M)\lra\D^0(B/A,M)\lra\D^1(C/B,M)\lra\cdots,
+\]
+\[
+  \cdots\lra\D_1(C/B,M)\lra\D_0(B/A,M)\lra\D_0(C/A,M)\lra\D_0(C/B,M)\lra 0.
+\]
+\end{env}
+
+\subsection*{\textsection~5. Some applications}
+
+In this section we extend to all $q$ certain vanishing results for $\D^q(B/A,M)$ which we proved in [?] for
+$q=1$ and in [?] for $q=1,2$. We shall state these results only for the cotangent complex $\L D_{B/A}$ leaving
+the translation for the functors $\D^q$ and $\D_q$ to the reader.
+
+\begin{prop}{5.1}
+If $S$ is a multiplicative system in $A$, then $\L D_{S^{-1}A/A}\simeq 0$.
+\end{prop}
+\begin{proof}
+(after Andr{\'e} [?, 20.1]) Let $C=S^{-1}A$. As $C\otimes_A C\simeq C$ we have an isomorphism
+$\L D_{C/A}\otimes_A C\simeq\L D_{C/A}$ of projective simplicial $C$-modules. As $C$ is flat over
+$A$ the former complex by 4.7 is isomorphic to $\L D_{C\otimes_A C/C}\simeq\L D_{C/C}\simeq 0$.
+\end{proof}
+
+\begin{env}{Corollary}{5.2}
+Suppose $T$ is a multiplicative system in $B$ and that $S$ is a multiplicative system in $A$ which
+is carried into $T$ by the homomorphism $A\to B$. Then
+\[
+  \L D_{T^{-1}B/S^{-1}A}\simeq\L D_{B/A}\otimes_B T^{-1}B.
+\]
+\end{env}
+\begin{proof}
+Applying 4.17 to $A\to B\to T^{-1}B$ and $A\to S^{-1}A\to T^{-1}B$ and using 5.1 we have
+\[
+  \L D_{B/A}\otimes_B T^{-1}B\simeq\L D_{T^{-1}B/A}\simeq\L D_{T^{-1}B/S^{-1}A}.
+\]
+\end{proof}
+
+\begin{prop}{5.3}
+Suppose that $A$ is Noetherian and $B$ is of finite type as an $A$-algebra. Then
+\begin{center}
+  $B$ is {\'e}tale over $A\iff\L D_{B/A}\simeq 0$;
+\end{center}
+\begin{center}
+  $B$ is smooth over $A\iff\L D_{B/A}\simeq cD_{B/A}$ and $D_{B/A}$ is a projective $B$-module.
+\end{center}
+\end{prop}
+\begin{proof}
+($\Lra$) Suppose $B$ {\'e}tale over $A$, i.e. $B$ is flat over $A$ and $\Delta:\Spec B\to\Spec B\otimes_A B$
+is an open immersion. Let $\mathfrak{p}$ be a prime ideal of $B$ and let $\mathfrak{q}=\Delta(\mathfrak{p})$
+so that $(B\otimes_A B)_{\mathfrak{q}}\simeq B_{\mathfrak{p}}$. Then there is an isomorphism of projective
+$B_{\mathfrak{p}}$-modules
+\begin{align*}
+  (\L D_{B/A})_{\mathfrak{p}}&\simeq(\L D_{B/A}\otimes_A B)_{\mathfrak{q}}\\
+                             &\simeq(\L D_{B\otimes_A B/B})_{\mathfrak{q}}\quad\text{by 4.9 since $B$ is flat over $A$.}\\
+                             &\simeq\L D_{(B\otimes_A B)_{\mathfrak{q}}/B_{\mathfrak{p}}}\quad\text{by 5.2}\\
+                             &\simeq 0.
+\end{align*}
+Thus $\H_\ast((\L D_{B/A})_{\mathfrak{p}})=\H_\ast(\L D_{B/A})_{\mathfrak{p}}=0$ as as $\mathfrak{p}$ is an arbitrary
+prime ideal of $B$, we have $\L D_{B/A}\simeq 0$.
+
+Now suppose $B$ smooth over $A$. As $\H_0(\L D_{B/A})\simeq D_{B/A}$ (3.8) there is a canonical map of
+projective simplicial $B$-modules $\L D_{B/A}\to cD_{B/A}$. To prove this is an isomorphism we reduce by
+localizing on $B$ to the case where $A\to B$ may be factoried $A\to P\to B$ where $P$ is a polynomial
+ring over $A$ and $P\to B$ is {\'e}tale. Then by 4.17, the {\'e}tale case of 5.3, and 3.1 we have
+\[
+  \begin{tikzcd}
+    \L D_{P/A}\otimes_P B\ar[r,"\sim"]\ar[d,"\sim"'] & \L D_{B/A}\ar[d]\\
+    D_{P/A}\otimes_P B\ar[r,"\sim"] & cD_{B/A}
+  \end{tikzcd}
+\]
+which proves the assertion.
+
+($\Longleftarrow$) The spectral sequence 3.7 degenerates yielding $\D^1(B/A,M)=0$ for all $B$-modules $M$.
+By 3.12 all $A$-algebra extentions of $B$ by an ideal of square zero split hence $B$ is smooth over $A$ by
+SGA, 1960--1961, III, 2--3. If also $D_{B/A}=0$, then $B$ is {\'e}tale over $A$.
+\end{proof}
+
+We know wish to give a reasonably ``geometric'' example where $\D_1(B/A)\neq 0$. The following results from
+4.17 and 3.14.
+\begin{prop}{5.4}
+Suppose that $A\to P\to B$ is a factorization of $A\to B$ where $P$ is a polynomial ring
+over $A$ and $P\to B$ is surjective with kernel $I$. Then
+\[
+  \D_q(B/A,M)\simeq\D_q(B/P,M),\quad q\geq 2,
+\]
+and there is an exact sequence
+\[
+  0\lra\D_1(B/A,M)\lra I/I^2\otimes_B M\lra D_{P/A}\otimes_P M\lra D_{B/A}\otimes_B M\lra 0
+\]
+and similar assertions hold for cohomology.
+\end{prop}
+
+\begin{envr}{Example}{5.5}
+Supose that $k$ is an algebraically closed field and that $R$ is the coordinate ring
+of the curve $x=t^3$, $y=t^4$, $z=t^5$. Then $R$ is an integral domain finitely generated
+over $k$. We show that $\D_1(R/k)\neq 0$. $R=P/I$ where $P=k[X,Y,Z]$ and
+$I=(Y^2-XZ,YZ-X^3,Z^2-XY)$. The element $u=XY(Y^2-XZ)-X(YZ-X^3)+Z(Z^2-X^2 Y)$ is in $I$
+but not in $I^2$. In effect if $\mathfrak{m}=(X,Y,Z)$, $I^2\subset\mathfrak{m}^4$ and
+$u\not\in\mathfrak{m}^4$. But by 5.4 we have the exact sequence
+\[
+  0\lra\D_1(R/k)\lra I/I^2\xrightarrow{\ \delta\ }D_{P/k}\otimes_P R\lra D_{R/k}\lra 0
+\]
+and a short calculation shows that $\delta(u+I^2)=0$. Hence $\D_1(R/k)\neq 0$ as
+asserted. It may be worth remarking that $I$ is a prime ideal in $P$ such that $I^2$
+is not primary; in fact $\im\delta=I/I^{(2)}$ where $I^{(2)}$ is the $I$-primary
+component of $I^2$.
+\end{envr}
+
+\section*{Chapter~II. The fundamental spectral sequence}
+
+In order to calculate $\D_\ast(B/A,M)$ one is reduced by 4.17 to the case where
+$B=A/I$, $I$ an ideal in $A$. In this case there is a spectral sequence which relates
+these groups to $\Tor_\ast^A(B,M)$, which is more easily computable. In this chapter
+we derive this spectral sequence and give some of its applications.
+
+\subsection*{\textsection~6. Construction of the spectral sequence}
+
+We retain the notations of the preceding chapter except that certain rings will not be
+commutative, but skew-commutative with respect to a canonical grading.
+
+Let $P$ be a free simplicial $A$-algebra resolution of $B$. Then $Q=P\otimes_A B$ is a
+simplicial augmented $B$-algebra. If $J=\ker(P\otimes_A B\to B)$ is the augmentation
+ideal, then
+\[
+  Q\supset J\supset J^2\supset\cdots\tag{6.1}
+\]
+is a filtration of $Q$ by simplicial ideals. By means of the shuffle operation
+$\underline{\otimes}$ ([HA, II, p.~6.6, (6)]), $Q$ with differential $d=\sum_i(-1)^i d_i$
+becomes a skew-commutative differential graded ring and 6.1 is a filtration of $Q$ by
+differential graded ideals. Consequently we obtain a spectral sequence of alegbras where
+\[
+  E_{pq}^2=\H_{p+q}(J^q/J^{q+1}),\quad d^r:E_{pq}^r\lra E_{p-r,q+r-1}^r,\tag{6.2}
+\]
+and ignoring for the moment questions of convergence, whose abutment is
+$\H_\ast(Q)\simeq\Tor_\ast^A(B,B)$. As $P$ is free over $A$, $Q$ is free over $B$ hence
+there is an isomorphism of graded simplicial algebras
+\[
+  \textstyle\bigoplus_q S_q^B(J/J^2)\simeq\bigoplus_q J^q/J^{q+1},\tag{6.3}
+\]
+where the left side the symmetric algebra functor over $B$ applied dimension-wise to
+the simplicial $B$-module $J/J^2$. Applying 5.4 dimension-wise to the maps
+$cA\to P\to cB$ we obtain isomorphisms of simplicial $B$-modules
+\[
+  J/J^2\simeq D_{P/A}\otimes_P B\simeq\L D_{B/A}.\tag{6.4}
+\]
+We now turn to the convergence of this spectral sequence.
+
+\begin{env}{Lemma}{6.5}
+Suppose that $Q$ is a projective augmented simplicial $B$-algebra with augmentation
+idela $J$. If $\H_0(J)=0$, then $\H_k(J^n)=0$ for $k<n$. 
+\end{env}
+
+A more general proof of this lemma will be proven in 8.8. An alternative proof of 6.5
+in outline is as follows. The arguments in [?, \textsection~4] are very general and show
+that it is sufficient to prove 6.5 when $Q=S^B X$ and $X=K(B,1)^r$ where
+$K(B,1)=B\Delta(1)/B\Delta(1)$ is the simplicial $B$-module whose normalization is
+the complex with $B$ in dimension $1$ and $0$ elsewhere. In this case one may apply known
+results on the connectivity of the symmetric algebra functor [?], in particular the
+following which will be proved in 7.32.
+
+\begin{nenv}{Lemma}
+Suppose that $X$ is a flat simplicial $B$-module with $\H_0(X)=0$. Then
+\[
+  \H_q(S_n^B X)=0,\quad q<n,
+\]
+and there is a graded algebra isomorphism
+\[
+  \textstyle\bigoplus_n\wedge_n^B\H_1(X)\simeq\bigoplus_n\H_n(S_n^B X),
+\]
+where $\wedge^B$ is the exterior algebra functor on $B$-modules.
+\end{nenv}
+
+In virtue of the augmentation, $\H_0(J)=0$ is equivalent to $\H_0(Q)\simeq B$,
+which when $Q=P\otimes_A B$ means $B\otimes_A B\simeq B$. In this case the spectral
+sequence 6.2 consructed from the $J$-adic filtration on $Q$ converges by 6.5, that is,
+$E_{pq}^r=E_{pq}^\infty$ for $r>p+q$ and moreover $E_{pq}^2=0$ if $p$ of $q<0$ by 6.5.
+Combining 6.2--6.4, we therefore have
+
+\begin{env}{Theorem}{6.8}
+If $B\otimes_A B\simeq B$, then there is a first quadrant spectral sequence
+\[
+  E_{pq}^2=\H_{p+q}(S_q^B\L D_{B/A})\Lra\Tor_{p+q}^A(B,B)
+\]
+of bigraded algebras, skew-commutative for the total degree.
+\end{env}
+
+Picture of spectral sequence:
+\[
+  \begin{sseq}[entrysize=9mm,
+               xlabelstep=3,ylabelstep=4,
+               xlabels={;p},ylabels={;q}]{0...3}{0...4}
+   \ssdrop{B}
+   \ssmoveto 0 1
+    \ssdrop{D_1}
+    \ssmoveto 0 2
+    \ssdrop{\wedge^2 D_1}
+    \ssmoveto 0 3
+    \ssdrop{\wedge^3 D_1}
+    \ssmoveto 1 0
+    \ssdrop{0}
+    \ssmoveto 2 0
+    \ssdrop{0}
+    \ssmoveto 1 1
+    \ssdrop{D_2}
+    \ssmoveto 2 1
+    \ssdrop{D_3}
+  \end{sseq}.
+\]
+
+Edge homomorphisms
+\[
+  \Tor_n^A(B,B)\lra\D_n(B/A),\quad n>0,\tag{6.9}
+\]
+\[
+  \wedge_n^B\D_1(B/A)\lra\Tor_n^A(B,B).\tag{6.10}
+\]
+
+Low dimensional isomorphisms
+\[
+  \D_0(B/A)=0,
+\]
+\[
+  \D_1(B/A)\simeq\Tor_1^A(B,B).\tag{6.11}
+\]
+
+Five term exact sequence
+\[
+  \Tor_3^A(B,B)\lra\D_3(B/A)\xrightarrow{\ d_2\ }\wedge_2^B\D_1(B/A)\lra
+  \Tor_2^A(B,B)\lra\D_2(B/A)\lra 0.\tag{6.12}
+\]
+6.10 is the unique graded $B$-algebra morphism extending the isomorphism 6.11.
+
+When $B=A/I$ where $I$ is an ideal in $A$ the hypothesis of 6.8 holds and in this case
+we may avail ourselves of the isomorphism
+\[
+  \D_1(B/A)\simeq\Tor_1^A(B,B)\simeq I/I^2,\tag{6.13}
+\]
+and rewrite the edge homomorphism 6.10
+in the form
+\[
+  \wedge_n^B(I/I^2)\lra\Tor_n^A(B,B).\tag{6.14}
+\]
+
+\begin{prop}{6.15}
+The edge homomorphism (6.9) annihilates the decomposable elements of $\Tor_\ast^A(B,B)$.
+\end{prop}
+\begin{proof}
+For $n>0$, $\Tor_n^A(B,B)=\H_n(Q)\simeq\H_n(J)$. If $\alpha\in\Tor_p$, $p>0$, is
+represented by $x\in J_p$ and $\beta\in\Tor_q$, $q>0$, is represented by $y\in J_q$,
+then $\alpha\cdot\beta\in\Tor_{p+q}$ is represented by
+$\mu(x{\otimes}y)\in J_{p+q}^2$, where $\mu:Q\otimes Q\to Q$ is the
+multiplication. But the edge homomorphism 6.9 is induced by $J\to J/J^2$, hence the
+image of $\alpha\cdot\beta$ in $\D_{p+q}(B/A)$ is zero.
+\end{proof}
+
+If $M$ is a $B$-module the as $J^q$ and $J/J^2$ are projective simplicial $B$-modules
+\[
+  Q\otimes_B M\supset J\otimes_B M\supset\cdots
+\]
+is a filtered simplicial module over the filtered simplicial ring $Q$ with
+\[
+  \gr Q\otimes_B M\simeq S^B(J/J^2)\otimes_B M.
+\]
+Hence
+
+\begin{thebibliography}{7}
+\bibitem{HA}
+[HA] D.~Quillen, \emph{Homotopical algebra}.
+\bibitem{GT}
+[GT] M.~Artin, \emph{Grothendieck topologies}.
+\end{thebibliography}
+
+\end{document}
+
