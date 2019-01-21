@@ -1,5 +1,5 @@
 # Homology of commutative rings 
-## TeXing D. Quillen's unpublished manuscript. 
+## TeXing D. Quillen's unpublished typescript. 
 
 to compile, `pdflatex main.tex` or `make` 
 
