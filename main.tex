@@ -71,6 +71,7 @@
 \newcommand{\R}{\cat{R}}
 \newcommand{\sR}{\mathrm{s}\R}
 \newcommand{\T}{\cat{T}}
+\newcommand{\Set}{\mathrm{Set}}
 \renewcommand{\L}{\mathbf{L}}
 \renewcommand{\H}{\mathrm{H}}
 \newcommand{\D}{\mathrm{D}}
@@ -84,7 +85,7 @@
 \maketitle
 
 \section*{Chapter~I.}
-\subsection*{\textsection~1. Differentials and derivations}
+\subsection*{\textsection 1. Differentials and derivations}
 
 All rings are commutative, associative, with identity and all modules are unitary unless
 stated otherwise. $\R$ denotes the category of rings. Also all diagrams are understood
@@ -93,7 +94,7 @@ to be commutative.
 Let $A$ be a ring and let $\C=A\backslash\R$ be the category of $A$-algebras.
 An object of $\C$ is a ring $B$ together with a map $i_B:A\to B$ of rings,
 and a map $f:B\to B'$ in $\C$ is a map of rings such that $fi_B=i_{B'}$. $\C$
-is a category of universal algebras so the general theory of [HA, \textsection~5, p.~5.14]
+is a category of universal algebras so the general theory of [HA, \textsection 5, p.~5.14]
 applies to define cohomology groups for an object $B$
 of $\C$ with values in a ``$B$-module,'' where ``$B$-module'' in the general theory
 means an abelian group object in $\C/B$. We show in this section that this notion of
@@ -228,7 +229,7 @@ From now on we will identify $(\C/B)_\mathrm{ab}$ and $\M_B$ by the equivalence 
 Prop. 1.5. 1.7 shows that $Y\mapsto\Diff_{Y/A}\otimes_Y B$ is identified with the
 abelianization functor on $\C/B$.
 
-\subsection*{\textsection~2. Homology and cohomology}
+\subsection*{\textsection 2. Homology and cohomology}
 
 The $q$-th cohomology group of the $A$-algebra $B$ with values in the abelian group
 object $B\oplus M$ of $\C/B$ [HA, II, p.~5.14] will be denoted
@@ -285,7 +286,7 @@ groups.
         (in each dimension) map of simplicial sets.
 \end{itemize}
 \end{prop}
-This results from [HA, II, \textsection~3, Prop.~2].
+This results from [HA, II, \textsection 3, Prop.~2].
 
 (2.6). A map of simplicial rings is said to be a trivial fibration if as a map of
 simplicial abelian groups it satisfies the equivalent conditions of 2.5. A map of
@@ -299,7 +300,7 @@ $\eta:[p]\to[q]$ is a surjective monotone map and (ii) $S_q$ is a free $R_q$-alg
 \begin{prop}{2.7}
 Any free map of simplicial rings is a cofibration.
 \end{prop}
-The proof of Propostion 3 [HA, II, \textsection~4] yields
+The proof of Propostion 3 [HA, II, \textsection 4] yields
 
 \begin{prop}{2.8}
 Any map $f$ of simplicial rings may be factored $f=pi$ where $i$ is free and
@@ -361,7 +362,7 @@ up to simplicial homotopy under the source and over the target of the map.
 (2.13). If $X$ is an object of a category we let $cX$ denote the ``constant'' simplicial object
 with $(cX)_q=X$, $\varphi^\ast=\id_X$ for all $q$, $\varphi$.
 
-(2.14). Let $A$, $B$, $M$, and $\C$ be as in \textsection~1. A simplicial $A$-algebra over $B$
+(2.14). Let $A$, $B$, $M$, and $\C$ be as in \textsection 1. A simplicial $A$-algebra over $B$
 (i.e. simplicial object of $\C/B$) $P$ is the same as a factorization $cA\to P\to cB$ of the map
 $cA\to cB$. We shall call $P$ a projective $A$-algebra resolution of $B$ if this factorization is
 a cofibrant factorization. By 2.8 projective $A$-algebra resolutions of $B$ exist. Choose one $P$,
@@ -387,13 +388,13 @@ We have
 \[
   \D^q(B/A,M)=\H^q(\Hom_B(\Diff_{P/A}\otimes_P B,M))=\H^q(\Der(P/A,M)),
 \]
-so the result follows from [HA, II, \textsection~5, th.~5]. Alternatively it follows from a general
+so the result follows from [HA, II, \textsection 5, th.~5]. Alternatively it follows from a general
 theorem of Verdier (SGA, 1963--1964, Expose~5, Appendix) once one notes that a $\T$-hypercovering of
 $B$ is the same as a simplicial $A$-algebra resolution and that a projective resolution is by (2.14)
 a cofinal object in the category of $\T$-hypercoverings of $B$.
 \end{proof}
 
-\subsection*{\textsection~3. Elementary properties}
+\subsection*{\textsection 3. Elementary properties}
 
 In this section we establish properties of the homology and cohomology groups which are elementary in
 the sense that they do not use special properties of commutative rings and hence are true without
@@ -521,11 +522,11 @@ $\theta$ to $I$ gives rise to a homomorphism of $B$-modules $I/I^2\to M$. This p
 define an inverse to $\chi_\ast$, hence $\Hom_B(\D_1(B/A),M)\simeq\Hom_B(I/I^2,M)$ and so $\D_1(B/A)\simeq I/I^2$.
 \end{proof}
 
-\subsection*{\textsection~4. Further properties}
+\subsection*{\textsection 4. Further properties}
 
 In this section we establish properties of the cohomology theory which are peculiar to commutative rings, since
 they depend on the fact that the direct sum in the category of $A$-algebras is given by the tensor product. We
-begin by recalling facts about simplicial modules which are proved in [HA, II, \textsection~6].
+begin by recalling facts about simplicial modules which are proved in [HA, II, \textsection6].
 
 (4.1). Let $R$ be a simplicial ring and let $\M_R$ be the abelian category of simplicial $R$-modules. The
 homotopy category $\Ho(\M_R)$ is obtained from $\M_R$ by formally adjoining the inverses of the weak equivalences
@@ -538,7 +539,7 @@ chain complexes.
 obtained by first applying the tri-functor $\Tor_i^-(-,-)$ dimension-wise. Let $X\otimes_R^\L Y$ denote
 the derived tensor product of $X$ and $Y$. $X\otimes_R^\L Y$ is isomorphic in $\Ho(\M_R)$ to
 $P\otimes_R Q$, where $P$ and $Q$ are projective resolutions of $X$ and $Y$ respectively. There is a
-spectral sequence ([HA, II, \textsection~6, th.~6])
+spectral sequence ([HA, II, \textsection 6, th.~6])
 \[
   E_{pq}^2=\H_p(\Tor_q^R(X,Y))\Lra\H_{p+q}(X\otimes_R^\L Y)\tag{4.3}
 \]
@@ -613,7 +614,7 @@ and similarly for homology.
 \end{env}
 
 (4.10). If $0\to X'\to X\to X''\to 0$ is an exact sequence in $\M_R$, then in $\Ho(\M_R)$ there is a cofibration
-sequence ([HA, II, \textsection~6])
+sequence ([HA, II, \textsection 6])
 \[
   X'\lra X\lra X''\xrightarrow{\ \partial\ }\Sigma X',\tag{4.11}
 \]
@@ -711,7 +712,7 @@ Hence if $M$ is a $C$-module, there are canonical exact sequences
 \]
 \end{env}
 
-\subsection*{\textsection~5. Some applications}
+\subsection*{\textsection 5. Some applications}
 
 In this section we extend to all $q$ certain vanishing results for $\D^q(B/A,M)$ which we proved in [?] for
 $q=1$ and in [?] for $q=1,2$. We shall state these results only for the cotangent complex $\LD_{B/A}$ leaving
@@ -818,7 +819,7 @@ $B=A/I$, $I$ an ideal in $A$. In this case there is a spectral sequence which re
 these groups to $\Tor_\ast^A(B,M)$, which is more easily computable. In this chapter
 we derive this spectral sequence and give some of its applications.
 
-\subsection*{\textsection~6. Construction of the spectral sequence}
+\subsection*{\textsection 6. Construction of the spectral sequence}
 
 We retain the notations of the preceding chapter except that certain rings will not be
 commutative, but skew-commutative with respect to a canonical grading.
@@ -856,7 +857,7 @@ idela $J$. If $\H_0(J)=0$, then $\H_k(J^n)=0$ for $k<n$.
 \end{env}
 
 A more general proof of this lemma will be proven in 8.8. An alternative proof of 6.5
-in outline is as follows. The arguments in [?, \textsection~4] are very general and show
+in outline is as follows. The arguments in [?, \textsection 4] are very general and show
 that it is sufficient to prove 6.5 when $Q=S^B X$ and $X=K(B,1)^r$ where
 $K(B,1)=B\Delta(1)/B\Delta(1)$ is the simplicial $B$-module whose normalization is
 the complex with $B$ in dimension $1$ and $0$ elsewhere. In this case one may apply known
@@ -889,6 +890,7 @@ If $B\otimes_A B\simeq B$, then there is a first quadrant spectral sequence
 of bigraded algebras, skew-commutative for the total degree.
 \end{env}
 
+\noindent
 Picture of spectral sequence:
 \[
   \begin{sseq}[entrysize=9mm,
@@ -912,6 +914,7 @@ Picture of spectral sequence:
   \end{sseq}.
 \]
 
+\noindent
 Edge homomorphisms
 \[
   \Tor_n^A(B,B)\lra\D_n(B/A),\quad n>0,\tag{6.9}
@@ -920,6 +923,7 @@ Edge homomorphisms
   \wedge_n^B\D_1(B/A)\lra\Tor_n^A(B,B).\tag{6.10}
 \]
 
+\noindent
 Low dimensional isomorphisms
 \[
   \D_0(B/A)=0,
@@ -928,6 +932,7 @@ Low dimensional isomorphisms
   \D_1(B/A)\simeq\Tor_1^A(B,B).\tag{6.11}
 \]
 
+\noindent
 Five-term exact sequence
 \[
   \Tor_3^A(B,B)\lra\D_3(B/A)\xrightarrow{\ d_2\ }\wedge_2^B\D_1(B/A)\lra
@@ -1012,7 +1017,7 @@ the only choice made in their construction was the free $A$-algebra resolution $
 $B$ which is seen to be unique and functorial in $A$, $B$ using 2.11.
 \end{envr}
 
-\subsection*{\textsection~7. Homology of the symmetric algebra}
+\subsection*{\textsection 7. Homology of the symmetric algebra}
 
 In order to use the spectral sequence 6.8 it is necessary to have results relating to the
 homology of the symmetric algebra of a simplicial module with the homology of the module.
@@ -1051,7 +1056,7 @@ We may assume $X$ and $Y$ are free simplicial $R$-modules and drop the $\L$. By
 isomorphism in dimensions $\leq k+1$ such that $\H_q(X')=0$ for $q>k$. If $X$ is a
 simplicial set, let $RK$ be the free simplicial $R$-module generated by $K$
 ($K\mapsto RK$ is left adjoint to the forgetful functor
-$\M_R\to\mathrm{s}\cat{S}\mathit{et}$). Let $\alpha_i\in\H_{k+1}(X)$ be elements
+$\M_R\to\mathrm{s}\Set$). Let $\alpha_i\in\H_{k+1}(X)$ be elements
 which generate $\H_{k+1}(X)$ as an $\H_0(X)$-module and choose a representative
 $x_i\in N_{k+1}(X)$ for $\alpha_i$. Here $N(X)$ is the normalized chain complex of $X$.
 Let $u_i:R\Delta(k+2)\to X$ be the unique simplicial $R$-module map sending
@@ -1070,12 +1075,127 @@ of both horizontal maps of this square is
   \textstyle\bigoplus_i R\Delta(k+2)/R\Delta(k+2)
 \]
 whose homology is a free $\H_\ast R$-module on generators of dimension $k+2$
-corresponding to the elements of
-    
+corresponding to the elements of $I$ (see [HA, II, p.~5.11, assertion~A]). The
+long exact sequence in homology for the exact sequence containing $X\to X^{(1)}$
+is thus
+\[
+  \cdots\lra\textstyle\bigoplus_I\H_0(R)\xrightarrow{\ \delta\ }\H_{k+1}(X)
+  \lra\H_{k+1}(X^{(1)})\lra 0\lra\cdots.
+\]
+By contruction $\delta$ is surjective hence $\H_{k+1}(X^{(1)})=0$. Repeating this
+contruction we obtain free maps $X^{(n)}\to X^{(n+1)}$ which are isomorphisms in
+dimension $\leq k+n+1$ such that $\H_q(X^{(n+1)})=0$ for $k<q\leq k+n+1$. Then
+$g:X\to X'=\lim_n\{X\to X^{(n)}\}$ is a free map with $\H_q(X')=0$ for $q>k$ which
+is an isomorphism in dimensions $\leq k$.
+
+Form a co-cartesian diagram
+\[
+  \begin{tikzcd}
+    X\ar[r,"f"]\ar[d,"g"'] & Y\ar[d,"g'"]\\
+    X'\ar[r,"f'"] & Y'
+  \end{tikzcd}
+  \tag{7.4}
+\]
+and note that $g'$ is an isomorphism in dimension $\leq k+1$, since $g$ is.
+
+Constructing a map $Y'\to Y''$ which is an isomorphism in dimension $\leq k+1$
+and has $\H_q(Y'')=0$ for $q>k$, and replacing $Y'$ by $Y''$ we obtain a diagram
+(7.4) where the vertical maps are free and isomorphisms in dimensions $\leq k+1$ and
+$\H_q(X')=\H_q(Y')=0$ for $q>k$.
+
+If $f$ is a $k$-equivalence, then as $g$, $g'$ are so is $f'$. Thus $f'$ is a weak
+equivalence, hence a homotopy equivalence since $X'$ and $Y'$ are free. Thus
+$F(g)$, $F(f')$, $F(g')$ are $k$-equivalences so $F(f)$ is.
 \end{proof}
 
+\begin{env}{Corollary}{7.5}
+If $X$ is $k$-connected to is $\L F(X)$.
+\end{env}
 
-\begin{thebibliography}{7}
+(7.6). For simplicial objects in an abelian category $\A$ the $0$-th homology functor
+$\H_0:\sA\to\A$ is left adjoint to the functor $c:\A\to\sA$. This also holds for more
+general categories, such as categories of universal algebras havig an underlying abelian
+group law, and in particular for the category of ring-modules. Hence given a simplicial
+ring and module $(R,X)$, the canonical adjunction map $(R,X)\to(c\H_0 R,c\H_0 X)$ gives
+rise to a map $F(R,X)\to F(\H_0 R,\H_0 X)$ and hence to a canonical map
+\[
+  \H_0(F(R,X))\lra F(\H_0 R,\H_0 X).\tag{7.7}
+\]
+We shall say that $F$ is right exact if this map is always an isomorphism.
+$F=S$, $\wedge$, and $\Gamma$ are all right exact because they are left adjoint
+functors. For example if $F=S$ we have
+\begin{align*}
+  \Hom_{\Alg{\H_0 R}}(S^{\H_0 R}(\H_0 X),A)&=\Hom_{\Mod{\H_0 R}}(\H_0 X,A)\\
+  &=\Hom_{\M_R}(X,cA)\\
+  &=\Hom_{\Alg{\text{simp},R}}(S^R X,cA)\\
+  &=\Hom_{\Alg{\H_0 R}}(\H_0(S^R X),A).
+\end{align*}
+
+(7.8). If $(B,M)$ is a ring-module let $L_q F(B,M)=\H_q(\L F(B,M))$. If $F$ is
+right exact clearly
+\[
+  L_0 F(B,M)\simeq F(B,M).
+\]
+
+\begin{prop}{7.9}
+There is a spectral sequence
+\[
+  E_{pq}^2=\H_p((L_q F)(R,X))\Lra\H_{p+q}(\L F(R,X))
+\]
+which when $F$ is right exact has the edge homomorphism
+\[
+  \H_n(\L F(R,X))\lra E_{n0}^2=\H_n(F(R,X))\tag{7.10}
+\]
+which is the map on homology induced by the canonical map $\L F(X)\to F(X)$.
+\end{prop}
+\begin{proof}
+This spectral sequence is similar to the K{\"u}nneth spectral sequence th.6(b) of
+[HA, II] and is constructed in pretty much the same way. We construct an exact sequence
+in $\M_R$
+\[
+  \cdots\lra P_{(2)}\lra P_{(1)}\lra P_{(0)}\lra X\lra 0\tag{7.11}
+\]
+by recursion, letting $X_{(0)}=X$, $P_{(q)}\to X_{(q)}$ be a free resolution of
+$X_{(q)}$, and $X_{(q+1)}=\ker(P_{(q)}\to X_{(q)})$. Let
+$Q_{(\ast)}=N_{(\ast)}^{-1}(P_{(\ast)})$ be the simplicial object in $\M_R$ obtained by
+applying the inverse of the normalization functor to the complex $P_{\ast()}$
+([?, \textsection 3]). Then
+\[
+  Q_{(k)}=\textstyle\bigoplus_\eta P_{(t\eta)}
+\]
+where $\eta$ runs over all surjective morphisms with source $[k]$ and target $[t\eta]$.
+From this we see that (i) $Q_{(k)}$ is a free ? module (ii) the inclusion
+$P_{(0)}\to Q_{(k)}$, coming from $\eta=$ unique map: $[k]\to[0]$, is a homotopy
+equivalence. Indeed by contruction $\H_\ast(P_{(k)})=0$ for $k>0$ hence $P_{(k)}$ is
+contractible.
+
+Now consider the bisimplicial abelian group $K_{pq}=F(R_q,Q_{(p)q})$ and the two
+associated spectral sequences having the homology of the diagonal simplicial abelian
+group $K_{nn}$ (for common abutment see [?] Satz.~2.15 or [?]). Using the property (ii)
+we have
+\[
+  \H_q^v(K_{p\ast})=\H_q F(R,P_{(0)})
+\]
+for all $p$ hence
+\[
+  \H_p^h\H_q^v(K_{\ast\ast})=\begin{cases} 0,& p>0,\\
+                                           \H_q F(R,P_{(0)}),& p=0.
+                             \end{cases}
+\]
+Thus the spectral sequence with this as $E^2$ degenerates showing that the map
+$F(R,P_{(0)})\to\Delta K$ is a weak equivalence. For fixed ?, the exactness of
+(7.11) together with property (i) imply that $Q_{(\ast)n}$ is a free simplicial
+$R_m$-module resolution of $X_m$, hence
+\[
+  \H_q^h(K_{\ast m})=(L_q F)(R_m,X_m)
+\]
+and
+\[
+  E_{pq}^2=\H_p^v\H_q^h(K_{\ast\ast})=\H_p((L_q F)(R,X))\Lra\H_{p+q}(\Delta K).
+\]
+\end{proof}
+
+\begin{thebibliography}{2}
 \bibitem{HA}
 [HA] D.~Quillen, \emph{Homotopical algebra}.
 \bibitem{GT}
